@@ -72,6 +72,7 @@ public class UserService {
         Optional.ofNullable(accessToken).orElseThrow(() -> new Exception401(JwtEnum.ACCESS_TOKEN_NOT_FOUND.name()));
         try {
             User user = JwtUtil.verify(accessToken);
+            //존재하는 회원인지 확인. 토큰은 간단한 정보를 담고 있기 때문에 토큰에서 이름을 꺼내서 한 번 이름으로 검색해서 조회 해본다.
             User userPS = userRepository.findByUsername(user.getUsername()).orElseThrow(
                     ()-> new Exception401("유저네임을 찾을 수 없습니다")
             );

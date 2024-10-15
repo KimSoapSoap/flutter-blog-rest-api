@@ -16,6 +16,7 @@ public class CorsFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
+        //나중에 프론트쪽? 필터 걸어주는 것. 앱은 CORS설정이 필요 없기 때문에 모두 허용
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE, OPTIONS");
         response.setHeader("Access-Control-Max-Age", "3600");
